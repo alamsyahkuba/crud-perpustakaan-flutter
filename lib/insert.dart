@@ -2,9 +2,14 @@ import 'package:crud_perpustakaan/book_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class AddBookPage extends StatelessWidget {
-  AddBookPage({super.key});
+class AddBookPage extends StatefulWidget {
+  const AddBookPage({super.key});
 
+  @override
+  State<AddBookPage> createState() => _AddBookPage();
+}
+
+class _AddBookPage extends State<AddBookPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _authorController = TextEditingController();
@@ -27,6 +32,7 @@ class AddBookPage extends StatelessWidget {
     if (response != null) {
       //Jika ada error tampilkan pesan
       ScaffoldMessenger.of(context).showSnackBar(
+        // ignore: unnecessary_brace_in_string_interps
         SnackBar(content: Text('Error: ${response}')),
       );
     } else {

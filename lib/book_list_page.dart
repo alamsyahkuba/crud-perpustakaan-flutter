@@ -142,7 +142,7 @@ class _BookListPageState extends State<BookListPage> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => AddBookPage()),
+            MaterialPageRoute(builder: (context) => const AddBookPage()),
           );
         },
         child: const Icon(Icons.add),
