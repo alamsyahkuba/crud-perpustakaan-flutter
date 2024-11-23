@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'insert.dart';
 
 class BookListPage extends StatefulWidget {
   const BookListPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _BookListPageState createState() => _BookListPageState();
 }
 
@@ -31,9 +33,8 @@ class _BookListPageState extends State<BookListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
-          child: Text("Daftar Buku"),
-        ),
+        title: const Text("Daftar Buku"),
+        centerTitle: true,
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
@@ -61,7 +62,9 @@ class _BookListPageState extends State<BookListPage> {
                       Text(
                         book['author'] ?? "No Author",
                         style: const TextStyle(
-                            fontStyle: FontStyle.italic, fontSize: 14),
+                          fontStyle: FontStyle.italic,
+                          fontSize: 14,
+                        ),
                       ),
                       Text(
                         book['description'] ?? "No Description",
@@ -133,6 +136,17 @@ class _BookListPageState extends State<BookListPage> {
                 );
               },
             ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.lightBlue[200],
+        foregroundColor: Colors.black,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AddBookPage()),
+          );
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
